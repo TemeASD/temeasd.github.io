@@ -1,0 +1,347 @@
+<head></head>
+<body class="is-preload">
+    <template-header></template-header>
+        <!-- Highlights -->
+        <section class="wrapper">
+            <div class="inner">
+                <header class="special">
+                    <h2>TeamAPP</h2>
+                    <div class="content">
+                        <header>
+                            <a href="#">
+                                <img class="logot" src="images/teamapp.webp" alt="ag logo">
+                            </a>
+                            <p>Sivu on työn alla</p>
+                        </header>
+                        <p>"Tinder, mutta peliseuran hakuun". Nopea projekti jossa tutustuttiin NoSQL kantoihin, Nodeen backendissa
+                            sekä Angularin toimintaan.</p>
+                        <h2>Sisällysluettelo</h2>
+    
+                    </div>
+                </header>
+                <div class="highlights">
+                    <section>
+                        <div class="content">
+                                <header>
+                                    <h3>Frontend</h3>
+                                    <img class="logot" src="images/angular.webp" alt="teamapp logo">
+                                    <h4>Angular ~4</h4>
+                                </header>
+                            <p>Frontendissä käytimme Angularia, koska se tuntui meille parhaimmalta ja helpoimmalta vaihtoehdolta.</p>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="content">
+                                <header>
+                                    <h3>Backend</h3>
+                                    <img class="logot" src="images/nodejs.webp" alt="nodejs logo">
+                                    <h4>Node.JS</h4>
+                                </header>
+                            <p>Backendissa käytimme Node.JS ympäristöä. PHP tai Python ei ollut tuttu, joten halusimme käyttää JavaScript
+                                ympäristöä.
+                            </p>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="content">
+                                <header>
+                                    <h3>Tietokanta</h3>
+                                    <div class="mongotainer">
+                                        <img class="mongo" src="images/mongodb-logo-white.webp" alt="mongo logo">
+                                    </div>
+                                    <h4>MongoDB</h4>
+                                </header>
+                            <p>Tietokantana käytimme MongoDB:ta. Koimme sen soveltuvan projektiin, koska tallennettava data ei ollut
+                                monimutkaista.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        <!--PORTFOLIO CONTENT -->
+        <!--FRONTEND-->
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <div class="content" id="angular">
+                    <h3>Esisanat</h3>
+                    <blockquote>Lukiessasi tätä, ota huomioon että tämä on ensimmäinen "oikea" projektini. Tämä oli myös ensimmäinen kerta
+                        kun työskentelin minkään näiden teknologioiden kanssa.</blockquote>
+                    <blockquote>Olin osallisena projektissa jonka tarkoituksena oli tuottaa single page application (SPA), johon käyttäjä
+                        pystyy lisäämään itselleen ilmoituksia joilla haetaan peliseuraa. Tärkeimpinä ominaisuuksina projektissa
+                        oli autentikointi Steam tunnuksilla, postauksien luonti ja niiden lukeminen. Toteutimme näiden lisäksi
+                        muita ominaisuuksia, muun muassa ilmoitusten ilmoittaminen asiattomiksi, Admin sivun (ilmoitusten poisto,
+                        ilmoitusten määrän näyttäminen), ja alkeellisen hakutoiminnon. </blockquote>
+                    <p>Toimin projektissa lähinnä backendkehittäjänä sekä asioiden konffaajana. Projektin alussa järkeilin parin
+                        tutoriaalin pohjalta parhaan tiedostorakenteen. Projektin edetessä kirjoitin suuren osan backendistä
+                        (server.js), CRUD routeista, lisäksi suunnittelin tietokantarakenteen, sekä implementoin passport paketin
+                        ja tutoriaalin pohjalta login järjestelmän niin backendiin kuin frontendiinkin. Lisäksi olin mukana päivittämässä
+                        frontendissa posts sekä submit komponenttia ja kirjoitin admin komponentin.
+                    </p>
+                    <section>
+                        <h3>Angular/Frontend</h3>
+                        <p>
+                            Projektin aikana tarkoituksenani oli hakea ja saavuttaa kokonaisvaltaiset tietotaidot siitä miten Angular toimii ja siitä
+                            kuinka Angularilla kehitetään moderneja web-applikaatiota. Vaikka tein komponentin ja olin mukana
+                            tekemässä komponentteja puuttui minulta silti teoriatason osaamista aiheesta. Ongelmana oli se, että
+                            Angular oli kehittynyt todella vauhdikkaasti viime vuosien aikana ja näin ollen useat netissä olevat
+                            ohjeet olivat jo vanhentunutta tietoa. Opin projektin aikana Angularin toiminnasta paljon, vaikken
+                            välttämättä osannutkaan selittää kaikkea.</p>
+    
+                        <figcaption id="admin">
+                            Adminkomponentti </figcaption>
+                        <p>
+                            <span class="image fit">
+                                <img src="images/teamapp/admin from inside.webp" alt="adminkomponentti käytössä" />
+                            </span>
+                            Rakensin applikaatioon adminkomponentin jossa Admin oikeuksin varustettu käyttäjä voi poistaa häiritsevät ilmoitukset. Tähän
+                            komponenttiin pääsevät käsiksi vain ne ihmiset, joilla on SteamID valkolistattuna backendissa. Komponentti
+                            on tarkoituksella karun näköinen sillä adminin on nähtävä suuri määrä dataa kerralla. Komponentti
+                            ulkoasun lisäksi hyvin simppeli myös toiminnaltaan.
+                            <figcaption>Admin komponentin HTML template</figcaption>
+                            <pre>
+                        <code class="language-html">
+                            <xmp>
+    <ul>
+        <li *ngFor="let post of posts; let i = index" [attr.data-index]="i">
+        {{test.steamID}} | {{test.title}} | {{test.user}} | {{test.post}}
+        <b>| REPORTS:
+            <span *ngIf="post.reports != undefined">{{test.reports.length - 1}}</span>
+            <span *ngIf="post.reports == undefined">0</span>
+            </b> | DELETE THIS ?
+            <button mat-icon-button (click)="delete(test._id)"><mat-icon>delete</mat-icon></button>
+        </li>
+    </ul>
+                            </xmp>
+                         </code>
+                    </pre>
+                    <figcaption id="adminkomponentinhtml">Adminkomponentin typescriptit</figcaption>
+                            <pre>
+                        <code class="language-javascript">
+export class AdminComponent implements OnInit {
+    posts: any = [];
+    constructor(private dbService: DbService) { }
+        ngOnInit() {
+           this.loadAllPosts();
+        }
+        loadAllPosts() {
+            this.dbService.getAllPostsAsAdmin().subscribe(posts => {
+                this.posts = posts;
+            });
+        }
+        delete(id) {
+            this.dbService.deletePostById(id).subscribe(res => {
+                this.loadAllPosts();
+            });
+        }
+    }
+                              
+                    </code>
+                </pre>
+                        <figcaption>Backendissa tapahtuvat asiat kun postaukset haetaan listaan</figcaption>
+                        <pre>
+                    <code class="language-javascript">
+//Angularkomponentti kutsuu database servicestä funktion -> 
+getAllPostsAsAdmin() {
+    return this.http.get('api/posts/admin')
+      .map(res => res.json());
+  }
+
+//Päädytään serverillä tähän reittiin 
+app.use('/api/posts', posts);
+
+//Etsitään postaukset ja palautetaan ne käyttäjälle JSONina
+router.get('/admin', ensureAuthenticated, isSteamIdWhitelisted, (req, res, next) => {
+    post.find({})
+        .then((posts) => {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(posts);
+        }, (err) => next(err))
+            .catch((err) => next(err));
+});           
+                    </code>
+                </pre>
+                        <h4>Parannettavaa</h4>
+                        <p>Parannuksina komponenttiin voisi olla esimerkiksi popup modal joka, kysyy adminilta haluaako hän
+                            todella poistaa ilmoituksen. Backend voisi lähettää tiedot raporttien lukumäärän perusteella
+                            laskevassa järjestyessä ja jos yksi tai useampi käyttäjä on ilmoittanut postauksen, väri voisi
+                            muuttua punaiseksi. Nämä jäivät kuitenkin ajan puutteen takia tekemättä.
+                        </p>
+                        <h4>Puoli vuotta projektin jälkeen</h4>
+                        <p>Frontend näyttää todella alkeelliselta näpertelyltä ja asioiden opettelulta. Koodauskäytänteistä
+                            ei ole tietoakaan, koodin sisennykset menevät miten sattuu ja asioita ei ylipäätään tehdä järkevästi.
+                        </p>
+            </div>
+        </div>
+        </section>
+        <!--BACKEND-->
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <div class="content" id="nodejs">
+                    <h3>NodeJS ja Express</h3>
+                    <p> </p>
+                </div>
+            </div>
+        </section>
+        <!--DATABASE-->
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <div class="content" id="database">
+                    <h3>MongoDB ja Mongoose</h3>
+                    <p>Käytimme projektissamme Mongoosea tietokannan mallintamiseen ja tietokantakutsujen tekoon. Valitsimme
+                        Mongoosen, koska se on suosittu ja sille löytyy paljon tutoriaaleja sekä ohjeita. Lisäksi se sisältää
+                        valmiin validoinnin, se on tyypitetty ja helppokäyttöinen. Mongoosen kaveriksi asensimme ”Mongoose-Validator”
+                        npm paketin. Se sisältää laajemman validoinnin ja selkeyttää koodia, koska se antaa käyttää saman
+                        validaattorin useassa eri ”taulussa”. En projektin alussa tiennyt kuinka paljon eri dokumentteja
+                        tulisimme tallentamaan, joten loin kansiorakenteen jossa Mongoosen modelit sijaitsevat omassa kansiossaan
+                        eri tiedostoissa. Tämä paljastui hyväksi tavaksi tehdä asioita, koska se selkeyttää kansiorakennetta
+                        sekä helpottaa kehitystä pitäen koodin modulaarisena. Kaikki tietomme on tallennettu yhteen dokumenttiin,
+                        koska kaikki data on relevanttia tietoa postaukseen liittyen. Hyödynnämme alidokumenttia peleille
+                        koska yksittäistä peliä ei tarvita ilman postausta, joten ne on järkevä yhdistää. </p>
+                    <figcaption>Mongoosella tehty tietokantamalli</figcaption>
+                    <pre>
+                        <code class="language-javascript">
+//mongoose"schema" postauksille
+const Schema = mongoose.Schema;
+const PostsSchema = new mongoose.Schema({
+    user: {
+        type: String,
+        required: [true, 'Username is required']
+    },
+    title: {
+        type: String,
+        required: [true, 'Post title is required'],
+        validate: titleValidator
+    },
+    post: {
+        type: String,
+        validate: postValidator,
+    },
+    game: {
+        type: Number,
+        required: [true, 'Game is required to post']
+    },
+    language: {
+        type: String,
+    },
+    steamID: {
+        type: String,
+        required: [true, 'no steamID'],
+        validate: steamIDvalidator,
+    },
+    age: {
+        type: Number,
+        min: [12, 'Age too low'],
+        max: [99, 'Age too high'],
+        required: [true, 'Age is required to post']
+    },
+    updated_at: {
+        type: Date,
+        default: Date.now
+    },
+    games: {
+        rank: {
+            type: String
+        },
+        level: {
+            type: Number
+        },
+        //normal,competitive...?
+        gametype: {
+            type: String
+        },
+        //rainbow
+        maps: {
+            type: String
+        },
+        //csgo
+        prime: {
+            type: Boolean
+        },
+        //dota2
+        region: [String],
+        roles: {
+            type: String
+        },
+        hours: {
+            type: String
+        },
+    },
+    reports: {
+        type: [String],
+        default: undefined,
+        validate: steamIDvalidator,
+    }
+
+})
+//exporttaa "schema"
+module.exports = mongoose.model('Post', PostsSchema);
+
+</code>
+</pre>
+                    <figcaption>Validaattorit</figcaption>
+                    <pre>
+    <code class="language-javascript">
+//validoi
+const titleValidator = [
+    validate({
+        validator: 'isLength',
+        arguments: [5, 200],
+        message: 'Name should be between {ARGS[0]} and {ARGS[1]} characters'
+    }),
+    validate({
+        validator: 'matches',
+        //sallii alfanumeeriset merkit, ja muutamia erikoissymboleita. 
+        arguments: ['^[a-zA-Z0-9\-_@#! .,öäå]+$', 'i'],
+        message: 'Regex only allows {ARGS[0]}'
+    }),
+];
+const postValidator = [
+    validate({
+        validator: 'isLength',
+        arguments: [5, 500],
+        message: 'Name should be between {ARGS[0]} and {ARGS[1]} characters'
+    }),
+    validate({
+        validator: 'matches',
+        //sallii alfanumeeriset merkit, ja muutamia erikoissymboleita. 
+        arguments: ['^[a-zA-Z0-9\-_@#! .,öäå]+$', 'i'],
+        message: 'Regex only allows {ARGS[0]}'
+    })
+];
+
+const steamIDvalidator = [
+    validate({
+        validator: 'isLength',
+        arguments: [17, 19],
+        message: 'steamID should be between {ARGS[0]} and {ARGS[1]} characters'
+    }),
+]
+
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </section>
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <div class="content" id="reflektointi">
+                    <h3>Reflektointi</h3>
+                    <p>Aloitin projektin osaamisen näkökulmasta käytännössä nollasta. Minulla ei ollut mitään pohjatietoa Visual
+                        Studio Codesta, Mongosta, Angularista, Expressistä tai Node.JS:stä. Näistä pienistä ongelmista huolimatta
+                        onnistuin kuitenkin projektissa mielestäni hyvin. Kirjoitin lähes koko backendin itse, ja tein myös
+                        hieman frontend kehitystä. Kokonaisuutena syksy oli haastava ja ongelmallinen, koko projektin alulle
+                        saattaminen, uusien työkalujen sekä niiden syntaksin opetteleminen. Yhtenä hankalimpana ja koko projektin
+                        kulkuun vaikuttavana asiana mieleen tulee kansiorakenteen ja arkkitehtuurin suunnittelu. Loppujen
+                        lopuksi se onnistui yllättävän hyvin. Hommat helpottuivat huomattavasti, kun sai ensimmäisen kerran
+                        applikaation tulille, ja pääsi näkemään lähes reaaliajassa, kuinka koodimuutokset vaikuttivat sovelluksen
+                        käyttäytymiseen. Ongelmanratkaisussa käännyin usein googlen kautta StackOverflown, sekä eri työkalujen
+                        dokumentaatioiden puoleen. Tärkeää tämäntyyppisessä ongelmanratkonnassa on tietää mistä ongelmassa
+                            oikeasti on kyse, mitä avainsanoja haussa käyttää ja mitä oikeasti haluaa koodin tekevän. </p>
+                    </div>
+                </div>
+            </section>
+    
+    <template-footer></template-footer>
+</body>
