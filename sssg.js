@@ -1,6 +1,5 @@
 const fs = require('fs');
 const cheerio = require('cheerio');
-const varSub = require('./variableSubstitution');
 
 module.exports = {
     /**
@@ -38,7 +37,7 @@ module.exports = {
      * @param {string} filepath path to folder where nav.html is located
      * @param {cheerio} page the file you want to write your changes to
      */
-    writeNav: (filepath,page) => {
+    writeNav: (filepath, page) => {
         const nav = fs.readFileSync(`${filepath}\\nav.html`);
         const $nav = cheerio.load(nav);
         const navhtml = $nav('nav').parent().html();
@@ -66,7 +65,7 @@ module.exports = {
      * template file, for example "blockquote"
      * @param {cheerio} page the file you want to write your changes to
      */
-    writeCustomElement: (filepath, pageName, customElement, customElementTag, layoutElement, page) => {
+    writeCustomElement: (filepath, customElement, customElementTag, layoutElement, page) => {
         const element = fs.readFileSync(`${filepath}\\${customElement}.html`);
         const $element = cheerio.load(element);
         const elementhtml = $element(layoutElement).parent().html();

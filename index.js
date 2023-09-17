@@ -9,9 +9,10 @@ const utils = require('./utils');
 const templatePath = path.join(__dirname, 'templates');
 const pagesPath = path.join(__dirname, 'pages');
 
-// Create output folder 
-var dir = './docs';
-if (!fs.existsSync(dir)){
+// Create output folder
+const dir = './docs';
+console.log('yea')
+if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
 }
 
@@ -29,6 +30,7 @@ function createPage(pageName) {
 
 const pages = fs.readdirSync(pagesPath, { options: { withFiletypes: true } });
 pages.forEach((page) => {
+    console.log('eya')
     if (utils.fileType(page) === 'html') {
         createPage(page);
     }
